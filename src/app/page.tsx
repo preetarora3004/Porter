@@ -306,7 +306,7 @@ export default function Home() {
             {/* =========================================================
           HOW IT WORKS
       ========================================================= */}
-            <section id="how" className="bg-background py-24 sm:py-32">
+            <section id="how" className="bg-[#03080A] py-24 sm:py-32">
                 <div className="mx-auto max-w-7xl px-5 lg:px-8">
                     <div className="grid gap-14 lg:grid-cols-[.8fr_1.2fr] lg:gap-24">
                         <div>
@@ -472,7 +472,7 @@ export default function Home() {
             {/* =========================================================
           PRICING
       ========================================================= */}
-            <section id="pricing" className="bg-background py-24 sm:py-32">
+            <section id="pricing" className="bg-[#03080A] py-24 sm:py-32">
                 <div className="mx-auto max-w-7xl px-5 lg:px-8">
                     <div className="mx-auto max-w-2xl text-center">
                         <p className="section-kicker">Simple pricing</p>
@@ -492,8 +492,8 @@ export default function Home() {
                             <article
                                 key={plan.name}
                                 className={`relative border p-7 sm:p-8 ${plan.featured
-                                        ? "border-accent-strong bg-card shadow-highlight"
-                                        : "border-border bg-card"
+                                        ? "border-accent-strong bg-[#091116] shadow-highlight"
+                                        : "border-[#253034] bg-[#091116]"
                                     }`}
                             >
                                 {plan.featured && (
@@ -525,13 +525,13 @@ export default function Home() {
                                     variant={plan.featured ? "default" : "outline"}
                                     className={`mt-7 h-11 w-full ${plan.featured
                                             ? "bg-accent-strong text-accent-strong-foreground hover:bg-accent-strong/90"
-                                            : ""
+                                            : "bg-[#03080A] border-[#253034]"
                                         }`}
                                 >
                                     <a href="#quote">Choose {plan.name}</a>
                                 </Button>
 
-                                <ul className="mt-8 space-y-4 border-t border-border pt-7">
+                                <ul className="mt-8 space-y-4 border-t border-[#253034] pt-7">
                                     {plan.features.map((feature) => (
                                         <li key={feature} className="flex gap-3 text-sm">
                                             <Check className="mt-0.5 size-4 shrink-0 text-success" />
