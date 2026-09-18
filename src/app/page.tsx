@@ -52,7 +52,6 @@ const plans = [
     {
         name: "Starter",
         price: "Free",
-        fee: "50% of opportunity cost, or ₹2.5 minimum",
         features: [
             "Live courier comparison",
             "Automatic best-fit matching",
@@ -63,7 +62,7 @@ const plans = [
         name: "Accelerate",
         price: "₹1,899",
         suffix: "/ month",
-        fee: "40% of opportunity cost",
+        fee: "10% Discount on every shipping",
         featured: true,
         features: [
             "AI-built selling website",
@@ -76,12 +75,39 @@ const plans = [
         name: "Signature",
         price: "₹3,399",
         suffix: "/ month",
-        fee: "35% of opportunity cost",
+        fee: "15% Discount on every order",
         features: [
             "One-to-one website build",
             "Advanced customisation",
             "COD reconciliation",
             "Priority peak-season allocation",
+        ],
+    },
+];
+
+const deliveryPlans = [
+    {
+        name: "Delivery Lite",
+        price: "₹499",
+        suffix: "/month",
+        fee: "100 orders free of processing charges then 15% Discount",
+        features: [
+            "Up to 100 free orders every month",
+            "15% Discount on additional orders",
+            "Essential delivery management",
+        ],
+    },
+    {
+        name: "Delivery Pro",
+        price: "₹799",
+        suffix: "/ month",
+        fee: "200 orders free of processing charges then 20% Discount",
+        featured: true,
+        features: [
+            "Up to 200 free orders every month",
+            "20% discount on additional orders",
+            "Advance delivery management",
+            "Seller analytics & insights",
         ],
     },
 ];
@@ -282,25 +308,7 @@ export default function Home() {
             {/* =========================================================
           STATS
       ========================================================= */}
-            <section className="border-y border-white/10 bg-surface text-white">
-                <div className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-y divide-white/10 px-5 lg:grid-cols-4 lg:divide-y-0 lg:px-8">
-                    {[
-                        ["7.85 Cr", "registered MSMEs"],
-                        ["48.58%", "of India’s exports"],
-                        ["9.9%", "logistics CAGR"],
-                        ["₹2.43", "Mark-IT variable cost/order"],
-                    ].map(([value, label]) => (
-                        <div key={label} className="px-5 py-8 text-center lg:py-10">
-                            <div className="font-display text-3xl font-bold text-white lg:text-4xl">
-                                {value}
-                            </div>
-
-                            <div className="mt-2 text-xs uppercase text-white/50">
-                                {label}
-                            </div>
-                        </div>
-                    ))}
-                </div>
+            <section className="border-y border-white/10 p-1 bg-surface text-white">
             </section>
 
             {/* =========================================================
@@ -544,6 +552,86 @@ export default function Home() {
                     </div>
                 </div>
             </section>
+
+            <section
+                id="quote"
+                className="relative overflow-hidden bg-accent-strong py-1 text-accent-strong-foreground sm:py-1"
+            >
+                <div className="route-lines absolute inset-0 opacity-30" />
+            </section>
+
+            <section id="pricing" className="bg-[#03080A] py-24 sm:py-32">
+                <div className="mx-auto max-w-7xl px-5 lg:px-8">
+                    <div className="mx-auto max-w-2xl text-center">
+                        <p className="section-kicker">Plan for every stage</p>
+
+                        <h2 className="font-display mt-4 text-4xl font-bold sm:text-5xl">
+                            Grow without limits.
+                        </h2>
+
+                        <p className="mt-5 text-muted-foreground">
+                            Start free and upgrade whenever you are ready. Only pay what you need.
+                        </p>
+                    </div>
+
+                    <div className="mt-14 grid gap-5 lg:grid-cols-2">
+                        {deliveryPlans.map((plan) => (
+                            <article
+                                key={plan.name}
+                                className={`relative border p-7 sm:p-8 ${plan.featured
+                                        ? "border-accent-strong bg-[#091116] shadow-highlight"
+                                        : "border-[#253034] bg-[#091116]"
+                                    }`}
+                            >
+                                {plan.featured && (
+                                    <span className="absolute right-5 top-5 bg-accent-strong px-2 py-1 text-[10px] font-bold uppercase text-accent-strong-foreground">
+                                        Most popular
+                                    </span>
+                                )}
+
+                                <p className="text-sm font-semibold">Mark-IT {plan.name}</p>
+
+                                <div className="mt-7 flex items-end gap-2">
+                                    <span className="font-display text-4xl font-bold">
+                                        {plan.price}
+                                    </span>
+
+                                    {plan.suffix && (
+                                        <span className="pb-1 text-sm text-muted-foreground">
+                                            {plan.suffix}
+                                        </span>
+                                    )}
+                                </div>
+
+                                <p className="mt-3 min-h-10 text-xs text-muted-foreground">
+                                    {plan.fee}
+                                </p>
+
+                                <Button
+                                    asChild
+                                    variant={plan.featured ? "default" : "outline"}
+                                    className={`mt-7 h-11 w-full ${plan.featured
+                                            ? "bg-accent-strong text-accent-strong-foreground hover:bg-accent-strong/90"
+                                            : "bg-[#03080A] border-[#253034]"
+                                        }`}
+                                >
+                                    <a href="#quote">Choose {plan.name}</a>
+                                </Button>
+
+                                <ul className="mt-8 space-y-4 border-t border-[#253034] pt-7">
+                                    {plan.features.map((feature) => (
+                                        <li key={feature} className="flex gap-3 text-sm">
+                                            <Check className="mt-0.5 size-4 shrink-0 text-success" />
+                                            {feature}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </article>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
 
             {/* =========================================================
           FOOTER
